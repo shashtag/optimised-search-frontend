@@ -2,6 +2,7 @@ import React, {
   createContext,
   useCallback,
   useEffect,
+  useMemo,
   useReducer,
 } from "react";
 import { get } from "../APIs/Get";
@@ -25,6 +26,12 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
         return { ...state, input: action.payload, page: 1 };
       case "data":
         return { ...state, data: action.payload };
+      case "prev":
+        return { ...state, page: state.page - 1 };
+      case "next":
+        return { ...state, page: state.page + 1 };
+      case "setPage":
+        return { ...state, page: action.payload };
       default:
         return state;
     }
@@ -43,7 +50,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
     };
   };
 
-  let searchCache: any = {};
+  const searchCache: any = useMemo(() => ({}), []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const postData = useCallback(
@@ -51,6 +58,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
       let key: string = input + " " + page;
       if (searchCache[key]) {
         dispatch({ type: "data", payload: searchCache[key] });
+        return;
       }
       const { result } = await get(
         `http://localhost:8000/search/${input ? input + "/" : ""}${page}`,
