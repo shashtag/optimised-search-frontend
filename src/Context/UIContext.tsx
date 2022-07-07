@@ -23,6 +23,8 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
         return { ...state, loading: action.payload };
       case "input":
         return { ...state, input: action.payload, page: 1 };
+      case "data":
+        return { ...state, data: action.payload };
       default:
         return state;
     }
@@ -48,13 +50,13 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
     debounce(async (input: string, page: number) => {
       let key: string = input + " " + page;
       if (searchCache[key]) {
-        return searchCache[key];
+        dispatch({ type: "data", payload: searchCache[key] });
       }
       const { result } = await get(
         `http://localhost:8000/search/${input ? input + "/" : ""}${page}`,
       );
       searchCache[key] = result;
-      return searchCache[key];
+      dispatch({ type: "data", payload: searchCache[key] });
     }),
     [],
   );

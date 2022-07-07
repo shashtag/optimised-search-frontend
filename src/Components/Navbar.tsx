@@ -11,7 +11,7 @@ const Navbar = () => {
       <input
         value={state.input}
         type='text'
-        className='h-9 rounded-[4px] border-[#DDE0E4] min-w-[200px] text-xs'
+        className='h-9 rounded-[4px] border-[#DDE0E4] w-full mx-8 text-xs'
         placeholder='Search by name or ticker'
         onChange={(e) => {
           dispatch({ type: "input", payload: e.target.value });
