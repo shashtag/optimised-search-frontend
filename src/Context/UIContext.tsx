@@ -41,12 +41,20 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
     };
   };
 
+  let searchCache: any = {};
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const postData = useCallback(
     debounce(async (input: string, page: number) => {
+      let key: string = input + " " + page;
+      if (searchCache[key]) {
+        return searchCache[key];
+      }
       const { result } = await get(
         `http://localhost:8000/search/${input ? input + "/" : ""}${page}`,
       );
-      console.table(result);
+      searchCache[key] = result;
+      return searchCache[key];
     }),
     [],
   );
@@ -56,6 +64,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
       postData(state.input, state.page);
     }
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.input, state.page]);
 
   return (
