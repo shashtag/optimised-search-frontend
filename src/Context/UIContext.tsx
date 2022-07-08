@@ -60,6 +60,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
         searchCache[key] &&
         moment(searchCache[key].endTime).isAfter(moment())
       ) {
+        dispatch({ type: "loading", payload: false });
         dispatch({ type: "data", payload: searchCache[key] });
         return;
       }
@@ -68,6 +69,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
       );
       searchCache[key] = result;
       searchCache[key].endTime = moment().add(10, "minutes");
+      dispatch({ type: "loading", payload: false });
       dispatch({ type: "data", payload: searchCache[key] });
     }),
     [],
@@ -75,6 +77,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     if (state.input.length > 2 || state.input.length === 0) {
+      dispatch({ type: "loading", payload: true });
       postData(state.input, state.page);
     }
     return () => {};

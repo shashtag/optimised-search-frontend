@@ -7,7 +7,13 @@ module.exports = {
       med: ["Graphik Medium"],
       bla: ["Graphik Black"],
     },
-    extend: { colors: { h2: "#2f363f" } },
+    extend: {
+      colors: { h2: "#2f363f", def: "#535b62", light: "#81878c" },
+      boxShadow: {
+        "3charbox":
+          "0 4px 16px 0 rgb(0 0 0 / 15%), 0 1px 2px 0 rgb(0 0 0 / 7%), 0 0 1px 0 rgb(0 0 0 / 20%)",
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

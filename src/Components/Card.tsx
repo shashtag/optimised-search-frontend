@@ -11,7 +11,7 @@ const Card = ({ name, sector, symbol }: Props) => {
       <img
         className='rounded-t-lg'
         src='https://cdn.logo.com/hotlink-ok/logo-social.png'
-        alt=''
+        alt={`${name} logo`}
       />
 
       <div className='p-5'>
