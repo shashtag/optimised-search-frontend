@@ -6,6 +6,7 @@ import React, {
   useReducer,
 } from "react";
 import { get } from "../APIs/Get";
+import moment from "moment";
 
 export const UIContext = createContext<any>(null);
 
@@ -43,7 +44,6 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
     let timeout: any;
     return (...args: any) => {
       clearTimeout(timeout);
-
       timeout = setTimeout(() => {
         cb(...args);
       }, delay);
@@ -56,7 +56,10 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
   const postData = useCallback(
     debounce(async (input: string, page: number) => {
       let key: string = input + " " + page;
-      if (searchCache[key]) {
+      if (
+        searchCache[key] &&
+        moment(searchCache[key].endTime).isAfter(moment())
+      ) {
         dispatch({ type: "data", payload: searchCache[key] });
         return;
       }
@@ -64,6 +67,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
         `http://localhost:8000/search/${input ? input + "/" : ""}${page}`,
       );
       searchCache[key] = result;
+      searchCache[key].endTime = moment().add(10, "minutes");
       dispatch({ type: "data", payload: searchCache[key] });
     }),
     [],

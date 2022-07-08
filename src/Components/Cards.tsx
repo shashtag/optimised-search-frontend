@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UIContext } from "../Context/UIContext";
 import Card from "./Card";
-import Pagination from "./Pagination";
+import Pagination from "./Page";
 
 const Cards = () => {
   const { state } = useContext(UIContext);
@@ -10,10 +10,10 @@ const Cards = () => {
       <h2 className=' mb-4 text-xl font-med text-h2'>Stocks result</h2>
       <Pagination />
       <div className='flex flex-wrap justify-around'>
-        {state?.data?.docs?.map((data: any) => (
+        {state?.data?.docs?.map((data: any, i: number) => (
           <Card
             name={data.name}
-            key={data.id}
+            key={i}
             sector={data.sector}
             symbol={data.symbol}
           />
