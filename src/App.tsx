@@ -10,7 +10,9 @@ function App() {
     <>
       <Navbar />
       <Cards />
-      <div className=' px-4'>{state.data ? <Pagination /> : null}</div>
+      <div className=' px-4 md:px-10'>
+        {state.data ? state.data.total !== 0 ? <Pagination /> : null : null}
+      </div>
     </>
   );
 }

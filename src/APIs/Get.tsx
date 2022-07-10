@@ -7,7 +7,7 @@ export const get = async (url: string) => {
     return await axios.get(url).then((res) => {
       return { result: res.data, status: res.status };
     });
-  } catch (error: any) {
+  } catch (error) {
     return { result: error.response.data, status: error.response.status };
   }
 };

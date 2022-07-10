@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { useContext } from "react";
 import { UIContext } from "../Context/UIContext";
 
-const Pagination = () => {
+const Page = () => {
   const { state, dispatch } = useContext(UIContext);
   return (
     <div className='bg-white  py-3 flex items-center justify-between border-t border-gray-200 sm:px-6'>
@@ -105,4 +105,4 @@ const Pagination = () => {
     </div>
   );
 };
-export default Pagination;
+export default Page;

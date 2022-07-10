@@ -8,18 +8,28 @@ import React, {
 import { get } from "../APIs/Get";
 import moment from "moment";
 
-export const UIContext = createContext<any>(null);
-
+type StateType = {
+  loading: boolean;
+  input: string;
+  page: number;
+};
 interface Props {
   children: React.ReactNode;
 }
+
+export const UIContext = createContext<any>(null);
+console.log(UIContext);
+
 export const UIProvider: React.FC<Props> = ({ children }) => {
-  const initialState: any = {
+  const initialState: StateType = {
     loading: false,
     input: "",
     page: 1,
   };
-  const reducer = (state: any, action: any) => {
+  const reducer = (
+    state: StateType,
+    action: { type: string; payload: any },
+  ) => {
     switch (action.type) {
       case "loading":
         return { ...state, loading: action.payload };
@@ -41,7 +51,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const debounce = (cb: Function, delay = 500) => {
-    let timeout: any;
+    let timeout: NodeJS.Timeout;
     return (...args: any) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
@@ -64,9 +74,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
         dispatch({ type: "data", payload: searchCache[key] });
         return;
       }
-      const { result } = await get(
-        `http://localhost:8000/search/${input ? input + "/" : ""}${page}`,
-      );
+      const { result } = await get(`${input ? input + "/" : ""}${page}`);
       searchCache[key] = result;
       searchCache[key].endTime = moment().add(10, "minutes");
       dispatch({ type: "loading", payload: false });
