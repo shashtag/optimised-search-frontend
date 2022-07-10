@@ -1,6 +1,54 @@
-# Getting Started with Create React App
+# Smallcase-search-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+## Description
+Create an input text box with search functionality on key press.<br>
+Show the list of search results in a paginated view with 5 results per page<br>
+Add a load more button to allow users to load the next set of results (the
+next page).<br>
+The search should happen automatically as the user types<br>
+Should be able to handle the following extra use cases :
+- The search results are coming from an api, the api can have some
+latency, so we should optimize the number of api calls that we send, for
+example:
+- We might want to cache the results on the FE for a particular
+query for some time, so that we don’t make an api call for the
+same query
+- We might want to only start making the call after the user has at
+least typed in 3 characters
+- We may want to wait for some time after the user finishes typing,
+so that we do not send the api calls for intermediate states
+- What happens if an api call for a previous query takes more time
+than the current query, how would the UI handle that ? For
+example, the user types in abc, the query goes to the api,
+meanwhile the user types in abcde, this query goes to the api as
+well, what happens if the response for ‘abcde’ returns before
+‘abc’? The UI should not be in an inconsistent state.
+- The look and feel should be derived in accordance with the smallcase.com
+website.<br>
+## Tech stack
+- React
+- Create react app
+- Allowed to use a css library for look and feel
+- Axios if you want to use an actual search results api Or You can create
+a fake api using setTimeout within the codebase
+## Evaluation Criteria and submissions
+● Functionality completion - Completed all functionality with proper optimization. <br>
+● Polished look and feel - The look is derived from the look of the beautifully looking smallcase website. <br>
+● Responsiveness - The website is responsive for all mobile laptop and tablet sizes.
+● Component patterns - Proper react patterns are use 
+● CSS usage
+### ● Bonus points for:
+○ Typescript - Yes <br>
+○ Tests - Learnt react testing library and cypress, had moderate success.<br>
+○ Accessibility - The website uses proper alt information for images, uses aria tags and HTML tags to separate content.<br>
+○ Css animations / transitions - The website features beautiful and minimal style animations.<br>
 
 ## Available Scripts
 
@@ -29,18 +77,23 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[contributors-shield]: https://img.shields.io/github/contributors/dyte-submissions/dyte-vit-2022-shashtag.svg?style=for-the-badge
+[contributors-url]: https://github.com/shashtag/smallcase-search-frontend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dyte-submissions/dyte-vit-2022-shashtag.svg?style=for-the-badge
+[forks-url]: https://github.com/shashtag/smallcase-search-frontend/network/members
+[stars-shield]: https://img.shields.io/github/stars/dyte-submissions/dyte-vit-2022-shashtag.svg?style=for-the-badge
+[stars-url]: https://github.com/shashtag/smallcase-search-frontend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dyte-submissions/dyte-vit-2022-shashtag.svg?style=for-the-badge
+[issues-url]: https://github.com/shashtag/smallcase-search-frontend/issues
+[license-shield]: https://img.shields.io/github/license/dyte-submissions/dyte-vit-2022-shashtag.svg?style=for-the-badge
+[license-url]: https://github.com/shashtag/smallcase-search-frontend/blob/main/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/shashtag
+[product-screenshot]: images/dogo.jpeg
+[version-satisfaction]: images/version.png
+[version-update]: images/update.png
+[loading]: images/loading.png
+[error1]: images/error1.png
+[error2]: images/error2.png
+[error3]: images/error3.png
+[error4]: images/error4.png
