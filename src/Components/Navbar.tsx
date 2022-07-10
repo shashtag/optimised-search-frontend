@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <>
       <div className='h-[56px]'></div>
-      <nav className='px-4 md:px-10 bg-white z-10 fixed top-0 left-0 right-0 flex justify-between border-b-[1px] items-center h-14'>
+      <nav className='px-4 md:px-10 animate-topSlide bg-white z-10 fixed top-0 left-0 right-0 flex justify-between border-b-[1px] items-center h-14'>
         <img src={navLogo} alt='smallcase logo' />
         <div className='mx-8  w-full relative'>
           <input

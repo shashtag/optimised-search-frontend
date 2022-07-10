@@ -27,7 +27,7 @@ const Card = ({ name, sector, symbol }: Props) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <button className='inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 '>
+        <button className='hover:-rotate-3 transition-all inline-flex items-center  py-2 px-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 '>
           Read more
           <svg
             className='ml-2 -mr-1 w-4 h-4'

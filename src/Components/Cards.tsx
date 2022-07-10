@@ -14,8 +14,10 @@ type CardData = {
 const Cards = () => {
   const { state } = useContext(UIContext);
   return (
-    <div className='px-4 md:px-10 py-6'>
-      <h2 className=' mb-4 text-xl font-med text-h2'>Stocks Result</h2>
+    <div className='px-4 md:px-10 py-6 animate-bottomSlide'>
+      <h2 className='animate-leftSlide mb-4 text-xl font-med text-h2'>
+        Stocks Result
+      </h2>
       {state.data ? (
         state.data.total !== 0 ? (
           <Pagination />

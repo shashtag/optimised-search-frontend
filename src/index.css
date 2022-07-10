@@ -14,3 +14,25 @@
   font-family: "Graphik Medium";
   src: url("../public/fonts/GraphikMedium.otf");
 }
+
+@keyframes topSlide {
+  0% {
+    transform: translateY(-100%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  
+}
+@keyframes leftSlide {
+  0% {
+    transform: translateX(-100%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  
+}
+@keyframes bottomlide {
+  0% {
+    transform: translateY(100%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  
+}
