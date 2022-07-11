@@ -6,4 +6,4 @@ describe("pagination", () => {
   // click on any page except last one
   // go to the last page
   // check if next is disbled
-};);
+});
