@@ -35,7 +35,11 @@ const Page = () => {
             className='relative z-0 inline-flex rounded-md shadow-sm -space-x-px'
             aria-label='Pagination'>
             <button
-              className='relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
+              className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300  text-sm font-medium text-gray-500  ${
+                state.page === 1
+                  ? "bg-slate-200 cursor-not-allowed"
+                  : "bg-white hover:bg-gray-50"
+              }`}
               disabled={state.page === 1}
               onClick={() => dispatch({ type: "prev" })}>
               <ChevronLeftIcon className='h-5 w-5' aria-hidden='true' />
@@ -88,13 +92,21 @@ const Page = () => {
               </button>
             ) : null}
             {state?.data?.pages - state.page > 2 ? (
-              <button className='bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium'>
+              <button
+                onClick={() =>
+                  dispatch({ type: "setPage", payload: state?.data?.pages })
+                }
+                className='bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium'>
                 {state?.data?.pages}
               </button>
             ) : null}
             <button
-              className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-              disabled={state?.data?.pages === state.page}
+              className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 ${
+                state.data.pages === state.page
+                  ? "bg-slate-200 cursor-not-allowed"
+                  : "bg-white hover:bg-gray-50"
+              }`}
+              disabled={state.data.pages === state.page}
               onClick={() => dispatch({ type: "next" })}>
               Next
               <ChevronRightIcon className='h-5 w-5' aria-hidden='true' />
